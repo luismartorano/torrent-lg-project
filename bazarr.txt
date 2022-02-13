@@ -1,0 +1,16 @@
+version: "2.1"
+services:
+  bazarr:
+    image: lscr.io/linuxserver/bazarr
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=100
+      - TZ=Brazil
+    volumes:
+      - /media/luismartorano/HD12/dockerapp/bazarr:/config
+      - /media/luismartorano/HD12/data/sonarr/series:/tv
+      - /media/luismartorano/HD12/data/radarr/moviesdownload:/movies
+    ports:
+      - 6767:6767
+    restart: unless-stopped

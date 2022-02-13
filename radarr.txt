@@ -1,0 +1,17 @@
+---
+version: "2.1"
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=100
+      - TZ=Brazil
+    volumes:
+      - /media/luismartorano/HD12/dockerapp/radarr:/config
+      - /media/luismartorano/HD12/data/radarr/moviesdownload:/movies #optional
+      - /media/luismartorano/HD12/data/qbittorrent/downloads:/downloads #optional
+    ports:
+      - 7878:7878
+    restart: unless-stopped

@@ -1,0 +1,19 @@
+---
+version: "2.1"
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=100
+      - TZ=Brazil
+      - WEBUI_PORT=8080
+    volumes:
+      - /media/luismartorano/HD12/dockerapp/qbittorrent:/config
+      - /media/luismartorano/HD12/data/qbittorrent/downloads:/downloads
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      - 8080:8080
+    restart: unless-stopped
