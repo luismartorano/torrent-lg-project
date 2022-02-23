@@ -1,0 +1,17 @@
+---
+version: "2.1"
+services:
+  beets:
+    image: lscr.io/linuxserver/beets
+    container_name: beets
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /mnt/d/dockerapp/beets:/config
+      - /mnt/d/data/lidarr/music:/music
+      - /mnt/d/data/qbittorrent/downloads:/downloads
+    ports:
+      - 8337:8337
+    restart: unless-stopped
